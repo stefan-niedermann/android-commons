@@ -1,0 +1,12 @@
+<resources>
+
+
+    <string name="copied_to_clipboard">复制到剪贴板</string>
+
+    <string name="could_not_copy_to_clipboard">无法复制到剪贴板</string>
+
+
+    <!-- Filter -->
+
+
+</resources>

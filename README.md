@@ -10,5 +10,6 @@
 Add this dependency to your `build.gradle`-file to include *all* modules at once:
 
 ```groovy
-implementation 'com.github.stefan-niedermann:android-commons:0.0.2'
+implementation 'com.github.stefan-niedermann:android-commons:0.0.3' // All modules
+implementation 'com.github.stefan-niedermann.android-commons:util:0.0.3' // Only util module
 ```
