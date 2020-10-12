@@ -40,6 +40,10 @@ public class ClipboardUtil {
         return true;
     }
 
+    /**
+     * @param context {@link Context}
+     * @return <code>null</code> if the clipboard does not contain a valid {@link URL}, otherwise the {@link URL} as {@link String}.
+     */
     @Nullable
     public static String getClipboardURLorNull(@NonNull Context context) {
         final ClipboardManager clipboardManager = (ClipboardManager) context.getSystemService(CLIPBOARD_SERVICE);
