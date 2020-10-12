@@ -10,5 +10,5 @@
 Add this dependency to your `build.gradle`-file to include *all* modules at once:
 
 ```groovy
-implementation 'com.github.stefan-niedermann:android-commons:0.0.1'
+implementation 'com.github.stefan-niedermann:android-commons:0.0.2'
 ```
