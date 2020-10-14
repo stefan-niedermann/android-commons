@@ -1,0 +1,14 @@
+<resources>
+
+
+    <!-- About -->
+
+    <string name="copied_to_clipboard">Copiado para a área de transferência</string>
+
+    <string name="could_not_copy_to_clipboard">Não foi possível copiar para a área de transferência</string>
+
+
+    <!-- Filter -->
+
+
+</resources>

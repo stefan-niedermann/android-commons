@@ -1,0 +1,4 @@
+<resources>
+    <string name="copied_to_clipboard">クリップボードにコピーされました</string>
+    <string name="could_not_copy_to_clipboard">クリップボードにコピーできませんでした</string>
+</resources>

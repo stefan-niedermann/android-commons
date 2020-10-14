@@ -1,0 +1,4 @@
+<resources>
+    <string name="copied_to_clipboard">클립보드로 복사</string>
+    <string name="could_not_copy_to_clipboard">클립보드에 복사할 수 없습니다.</string>
+</resources>

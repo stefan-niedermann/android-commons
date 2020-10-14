@@ -1,2 +1,3 @@
+include ':shared-preferences'
 include ':util'
 rootProject.name='android-commons'

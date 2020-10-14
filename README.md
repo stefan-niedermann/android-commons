@@ -10,6 +10,19 @@
 Add this dependency to your `build.gradle`-file to include *all* modules at once:
 
 ```groovy
-implementation 'com.github.stefan-niedermann:android-commons:0.0.4' // All modules
-implementation 'com.github.stefan-niedermann.android-commons:util:0.0.4' // Only util module
+implementation 'com.github.stefan-niedermann:android-commons:0.0.5'
+```
+
+## shared-preferences
+
+Provides `LiveData` wrapper around `SharedPreferences`.
+
+```groovy
+implementation 'com.github.stefan-niedermann.android-commons:shared-preferences:0.0.5' // Only shared-preferences module
+```
+
+## util
+
+```groovy
+implementation 'com.github.stefan-niedermann.android-commons:util:0.0.5' // Only util module
 ```
