@@ -14,7 +14,7 @@ abstract class SharedPreferenceLiveData<T>(var sharedPrefs: SharedPreferences, v
         }
     }
 
-    abstract fun getValueFromPreferences(key: String?, defValue: T): T
+    abstract fun getValueFromPreferences(key: String?, defValue: T): T?
     override fun onActive() {
         super.onActive()
         value = getValueFromPreferences(key, defValue)
