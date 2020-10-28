@@ -62,6 +62,7 @@ DimensionUtil.INSTANCE.dpToPx(context, R.dimen.my_dimension);
 ```java
 ColorUtil.INSTANCE.formatColorToParsableHexString("123");       // → #112233
 ColorUtil.INSTANCE.formatColorToParsableHexString("#12345605"); // → #123456
+ColorUtil.INSTANCE.intColorToHexString(Color.WHITE);            // →  ffffff
 ```
 
 ## :notebook: License
