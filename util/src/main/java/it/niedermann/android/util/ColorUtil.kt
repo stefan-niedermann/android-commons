@@ -110,4 +110,11 @@ object ColorUtil {
             false
         }
     }
+
+    /**
+     * Formats the given [ColorInt] to a 6 digit lowercase string *without* leading # character
+     */
+    fun intColorToHexString(@ColorInt color: Int): String? {
+        return String.format("%06X", 0xFFFFFF and color).toLowerCase(Locale.getDefault());
+    }
 }

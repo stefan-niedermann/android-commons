@@ -6,8 +6,8 @@ import androidx.core.util.Pair
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import it.niedermann.android.util.ColorUtil.formatColorToParsableHexString
 import it.niedermann.android.util.ColorUtil.getForegroundColorForBackgroundColor
+import it.niedermann.android.util.ColorUtil.intColorToHexString
 import it.niedermann.android.util.ColorUtil.isColorDark
-import junit.framework.Assert.assertEquals
 import org.junit.Assert
 import org.junit.Rule
 import org.junit.Test
@@ -53,6 +53,13 @@ class ColorUtilTest {
         }
     }
 
+    @Test
+    fun testIntColorToHexString() {
+        Assert.assertEquals("ffffff", intColorToHexString(Color.WHITE));
+        Assert.assertEquals("000000", intColorToHexString(Color.BLACK));
+        Assert.assertEquals("0082c9", intColorToHexString(Color.parseColor("#0082C9")));
+    }
+
     @Rule @JvmField
     val exception = ExpectedException.none()
 
@@ -71,7 +78,7 @@ class ColorUtilTest {
         validColors.add(Pair("aaff0055", "#aaff00"))
         validColors.add(Pair("#aaff0055", "#aaff00"))
         for (color in validColors) {
-            assertEquals("Expect " + color.first + " to be cleaned up to " + color.second, color.second, formatColorToParsableHexString(color.first))
+            Assert.assertEquals("Expect " + color.first + " to be cleaned up to " + color.second, color.second, formatColorToParsableHexString(color.first))
         }
         val invalidColors = arrayOf(null, "", "cc", "c", "#a", "#55L", "55L")
         for (color in invalidColors) {
@@ -84,7 +91,7 @@ class ColorUtilTest {
         @ColorInt
         private val DARK_COLORS = intArrayOf(
                 Color.BLACK,
-                Color.parseColor("#0082C9"),  // "Nextcloud-Blue"
+                Color.parseColor("#0082C9"),
                 Color.parseColor("#007676")
         )
 
