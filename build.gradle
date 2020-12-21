@@ -28,7 +28,3 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-
-ext {
-    ssoVersion = '0.5.3'
-}
