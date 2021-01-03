@@ -8,8 +8,7 @@ import it.niedermann.android.util.ColorUtil.formatColorToParsableHexString
 import it.niedermann.android.util.ColorUtil.getForegroundColorForBackgroundColor
 import it.niedermann.android.util.ColorUtil.intColorToHexString
 import it.niedermann.android.util.ColorUtil.isColorDark
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
+import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.ExpectedException
@@ -50,7 +49,7 @@ class ColorUtilTest {
             )
         }
         for (@ColorInt color in LIGHT_COLORS) {
-            assertTrue(
+            assertFalse(
                     "Expect " + String.format("#%06X", 0xFFFFFF and color) + " to be a light color",
                     isColorDark(color)
             )
