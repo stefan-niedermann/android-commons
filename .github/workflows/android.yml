@@ -21,14 +21,16 @@ jobs:
       - name: Unit tests
         run: bash ./gradlew test --stacktrace
 
-  instrumented:
-    name: Android instrumented tests
-    runs-on: macos-latest
+  aar:
+    name: Generate AAR
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Android instrumented tests
-        uses: reactivecircus/android-emulator-runner@v2
+      - name: Build debug AAR
+        run: bash ./gradlew assemble
+      - name: Upload AAR
+        uses: actions/upload-artifact@v2
         with:
-          api-level: 29
-          script: ./gradlew connectedAndroidTest --stacktrace
+          name: aar
+          path: ./**/build/outputs/aar/**.aar
