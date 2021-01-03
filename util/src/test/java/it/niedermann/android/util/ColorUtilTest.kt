@@ -1,37 +1,40 @@
 package it.niedermann.android.util
 
 import android.graphics.Color
+import android.os.Build
 import androidx.annotation.ColorInt
 import androidx.core.util.Pair
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import it.niedermann.android.util.ColorUtil.formatColorToParsableHexString
 import it.niedermann.android.util.ColorUtil.getForegroundColorForBackgroundColor
 import it.niedermann.android.util.ColorUtil.intColorToHexString
 import it.niedermann.android.util.ColorUtil.isColorDark
-import org.junit.Assert
+import org.junit.Assert.*
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.ExpectedException
 import org.junit.runner.RunWith
+import org.robolectric.RobolectricTestRunner
+import org.robolectric.annotation.Config
 import java.util.*
 
-@RunWith(AndroidJUnit4::class)
+@RunWith(RobolectricTestRunner::class)
+@Config(sdk = [Build.VERSION_CODES.P])
 class ColorUtilTest {
     @Test
     fun testGetForegroundColorForBackgroundColor() {
         for (@ColorInt color in DARK_COLORS) {
-            Assert.assertEquals(
+            assertEquals(
                     "Expect foreground color for " + String.format("#%06X", 0xFFFFFF and color) + " to be " + String.format("#%06X", 0xFFFFFF and Color.WHITE),
                     Color.WHITE.toLong(), getForegroundColorForBackgroundColor(color)
                     .toLong())
         }
         for (@ColorInt color in LIGHT_COLORS) {
-            Assert.assertEquals(
+            assertEquals(
                     "Expect foreground color for " + String.format("#%06X", 0xFFFFFF and color) + " to be " + String.format("#%06X", 0xFFFFFF and Color.BLACK),
                     Color.BLACK.toLong(), getForegroundColorForBackgroundColor(color)
                     .toLong())
         }
-        Assert.assertEquals(
+        assertEquals(
                 "Expect foreground color for " + String.format("#%06X", 0xFFFFFF and Color.TRANSPARENT) + " to be " + String.format("#%06X", 0xFFFFFF and Color.BLACK),
                 Color.BLACK.toLong(), getForegroundColorForBackgroundColor(Color.TRANSPARENT)
                 .toLong())
@@ -40,13 +43,13 @@ class ColorUtilTest {
     @Test
     fun testIsColorDark() {
         for (@ColorInt color in DARK_COLORS) {
-            Assert.assertTrue(
+            assertTrue(
                     "Expect " + String.format("#%06X", 0xFFFFFF and color) + " to be a dark color",
                     isColorDark(color)
             )
         }
         for (@ColorInt color in LIGHT_COLORS) {
-            Assert.assertFalse(
+            assertFalse(
                     "Expect " + String.format("#%06X", 0xFFFFFF and color) + " to be a light color",
                     isColorDark(color)
             )
@@ -55,12 +58,13 @@ class ColorUtilTest {
 
     @Test
     fun testIntColorToHexString() {
-        Assert.assertEquals("ffffff", intColorToHexString(Color.WHITE));
-        Assert.assertEquals("000000", intColorToHexString(Color.BLACK));
-        Assert.assertEquals("0082c9", intColorToHexString(Color.parseColor("#0082C9")));
+        assertEquals("ffffff", intColorToHexString(Color.WHITE));
+        assertEquals("000000", intColorToHexString(Color.BLACK));
+        assertEquals("0082c9", intColorToHexString(Color.parseColor("#0082C9")));
     }
 
-    @Rule @JvmField
+    @Rule
+    @JvmField
     val exception = ExpectedException.none()
 
     @Test
@@ -78,7 +82,7 @@ class ColorUtilTest {
         validColors.add(Pair("aaff0055", "#aaff00"))
         validColors.add(Pair("#aaff0055", "#aaff00"))
         for (color in validColors) {
-            Assert.assertEquals("Expect " + color.first + " to be cleaned up to " + color.second, color.second, formatColorToParsableHexString(color.first))
+            assertEquals("Expect " + color.first + " to be cleaned up to " + color.second, color.second, formatColorToParsableHexString(color.first))
         }
         val invalidColors = arrayOf(null, "", "cc", "c", "#a", "#55L", "55L")
         for (color in invalidColors) {
