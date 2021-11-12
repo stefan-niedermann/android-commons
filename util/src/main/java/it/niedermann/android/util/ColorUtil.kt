@@ -3,6 +3,10 @@ package it.niedermann.android.util
 import android.graphics.Color
 import androidx.annotation.ColorInt
 import java.util.*
+import kotlin.math.max
+import kotlin.math.min
+import kotlin.math.pow
+import kotlin.math.sqrt
 
 /**
  * Based on https://github.com/LeaVerou/contrast-ratio
@@ -10,6 +14,7 @@ import java.util.*
 object ColorUtil {
     private val FOREGROUND_CACHE: MutableMap<Int, Int> = HashMap()
     private val IS_DARK_COLOR_CACHE: MutableMap<Int, Boolean> = HashMap()
+
     @ColorInt
     public fun getForegroundColorForBackgroundColor(@ColorInt color: Int): Int {
         var ret = FOREGROUND_CACHE[color]
@@ -31,15 +36,15 @@ object ColorUtil {
 
     public fun getBrightness(@ColorInt color: Int): Int {
         val rgb = intArrayOf(Color.red(color), Color.green(color), Color.blue(color))
-        return Math.sqrt(rgb[0] * rgb[0] * .241 + (rgb[1]
+        return sqrt(rgb[0] * rgb[0] * .241 + (rgb[1]
                 * rgb[1] * .691) + rgb[2] * rgb[2] * .068).toInt()
     }
 
     public fun getContrastRatio(@ColorInt colorOne: Int, @ColorInt colorTwo: Int): Double {
         val lum1 = getLuminanace(colorOne)
         val lum2 = getLuminanace(colorTwo)
-        val brightest = Math.max(lum1, lum2)
-        val darkest = Math.min(lum1, lum2)
+        val brightest = max(lum1, lum2)
+        val darkest = min(lum1, lum2)
         return (brightest + 0.05) / (darkest + 0.05)
     }
 
@@ -50,14 +55,14 @@ object ColorUtil {
 
     public fun getSubcolorLuminance(@ColorInt color: Int): Double {
         val value = color / 255.0
-        return if (value <= 0.03928) value / 12.92 else Math.pow((value + 0.055) / 1.055, 2.4)
+        return if (value <= 0.03928) value / 12.92 else ((value + 0.055) / 1.055).pow(2.4)
     }
 
 
     /**
      * @return well formatted string starting with a hash followed by 6 hex numbers that is parsable by [Color.parseColor].
      */
-    public fun formatColorToParsableHexString(input: String?): String? {
+    public fun formatColorToParsableHexString(input: String?): String {
         requireNotNull(input) { "input color string is null" }
         if (isParsableValidHexColorString(input)) {
             return input
@@ -67,7 +72,7 @@ object ColorUtil {
         when (chars.size) {
             8 -> {
                 // Strip alpha channel
-                sb.append(Arrays.copyOfRange(chars, 0, 6))
+                sb.append(chars.copyOfRange(0, 6))
             }
             6 -> {
                 // Default long
@@ -75,7 +80,7 @@ object ColorUtil {
             }
             4 -> {
                 // Strip alpha channel
-                for (c in Arrays.copyOfRange(chars, 0, 3)) {
+                for (c in chars.copyOfRange(0, 3)) {
                     sb.append(c).append(c)
                 }
             }
@@ -114,7 +119,7 @@ object ColorUtil {
     /**
      * Formats the given [ColorInt] to a 6 digit lowercase string *without* leading # character
      */
-    fun intColorToHexString(@ColorInt color: Int): String? {
-        return String.format("%06X", 0xFFFFFF and color).toLowerCase(Locale.getDefault());
+    fun intColorToHexString(@ColorInt color: Int): String {
+        return String.format("%06X", 0xFFFFFF and color).lowercase(Locale.getDefault());
     }
 }
