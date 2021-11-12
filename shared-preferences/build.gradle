@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'maven-publish' // needed for JitPack.io
 
 android {
     compileSdkVersion 31
@@ -26,7 +27,19 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+}
 
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+
+                groupId = 'com.github.stefan-niedermann.android-commons'
+                artifactId = 'shared-preferences'
+            }
+        }
+    }
 }
 
 dependencies {
