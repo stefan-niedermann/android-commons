@@ -21,7 +21,7 @@ Many Android clients for Nextcloud apps need similar mechanisms. To reduce maint
 Add this dependency to your `build.gradle`-file to include *all* modules at once:
 
 ```groovy
-implementation 'com.github.stefan-niedermann:android-commons:0.2.1'
+implementation 'com.github.stefan-niedermann:android-commons:0.2.2'
 ```
 
 ## Modules
@@ -29,7 +29,7 @@ implementation 'com.github.stefan-niedermann:android-commons:0.2.1'
 ### shared-preferences
 
 ```groovy
-implementation 'com.github.stefan-niedermann.android-commons:shared-preferences:0.2.1'
+implementation 'com.github.stefan-niedermann.android-commons:shared-preferences:0.2.2'
 ```
 
 Provides `LiveData` wrapper around `SharedPreferences`.
@@ -44,7 +44,7 @@ SharedPreferenceIntLiveData liveData = SharedPreferenceIntLiveData(sharedPrefere
 ### util
 
 ```groovy
-implementation 'com.github.stefan-niedermann.android-commons:util:0.2.1'
+implementation 'com.github.stefan-niedermann.android-commons:util:0.2.2'
 ```
 
 #### Usage
