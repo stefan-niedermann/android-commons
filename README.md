@@ -37,8 +37,8 @@ Provides `LiveData` wrapper around `SharedPreferences`.
 #### Usage
 
 ```java
-SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
-SharedPreferenceIntLiveData liveData = SharedPreferenceIntLiveData(sharedPreferences, PREF_KEY_MY_COLOR, Color.WHITE)
+final var sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
+final var liveData = SharedPreferenceIntLiveData(sharedPreferences, PREF_KEY_MY_COLOR, Color.WHITE)
 ```
 
 ### util
