@@ -9,9 +9,7 @@ import it.niedermann.android.util.ColorUtil.getForegroundColorForBackgroundColor
 import it.niedermann.android.util.ColorUtil.intColorToHexString
 import it.niedermann.android.util.ColorUtil.isColorDark
 import org.junit.Assert.*
-import org.junit.Rule
 import org.junit.Test
-import org.junit.rules.ExpectedException
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
@@ -63,12 +61,8 @@ class ColorUtilTest {
         assertEquals("0082c9", intColorToHexString(Color.parseColor("#0082C9")));
     }
 
-    @Rule
-    @JvmField
-    val exception = ExpectedException.none()
-
     @Test
-    fun testGetCleanHexaColorString() {
+    fun testGetCleanHexColorString() {
         val validColors: MutableList<Pair<String, String>> = ArrayList()
         validColors.add(Pair("#0082C9", "#0082C9"))
         validColors.add(Pair("0082C9", "#0082C9"))
@@ -86,8 +80,9 @@ class ColorUtilTest {
         }
         val invalidColors = arrayOf(null, "", "cc", "c", "#a", "#55L", "55L")
         for (color in invalidColors) {
-            exception.expect(IllegalArgumentException::class.java)
-            formatColorToParsableHexString(color)
+            assertThrows(IllegalArgumentException::class.java) {
+                formatColorToParsableHexString(color)
+            }
         }
     }
 
