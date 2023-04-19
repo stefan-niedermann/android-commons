@@ -17,6 +17,12 @@ android {
         consumerProguardFiles 'consumer-rules.pro'
     }
 
+    compileOptions {
+        coreLibraryDesugaringEnabled true
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
     lintOptions {
         disable 'MissingTranslation'
         abortOnError false
@@ -45,6 +51,8 @@ afterEvaluate {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.3'
 
     implementation 'androidx.core:core-ktx:1.10.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
