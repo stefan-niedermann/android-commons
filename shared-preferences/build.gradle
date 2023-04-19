@@ -12,6 +12,7 @@ android {
         targetSdkVersion 33
         versionCode 2008
         versionName '0.2.9'
+        multiDexEnabled true
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
         consumerProguardFiles 'consumer-rules.pro'
