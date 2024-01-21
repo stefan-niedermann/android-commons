@@ -9,6 +9,7 @@
 - [How to use](#how-to-use)
 - [Modules](#modules)
   - [shared-preferences](#shared-preferences)
+  - [reactive-livedata](#reactive-livedata)
   - [util](#util)
 - [License](#notebook-license)
 
@@ -39,6 +40,30 @@ Provides `LiveData` wrapper around `SharedPreferences`.
 ```java
 final var sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
 final var liveData = SharedPreferenceIntLiveData(sharedPreferences, PREF_KEY_MY_COLOR, Color.WHITE)
+```
+
+### reactive-livedata
+
+```groovy
+implementation 'com.github.stefan-niedermann.android-commons:reactive-livedata:0.4.0'
+```
+
+Provides [`ReactiveX`](https://reactivex.io/) features for `LiveData`.
+
+#### Usage
+
+```java
+final var liveData = new MutableLiveData<Boolean>(false);
+final var rxLiveData = new ReactiveLiveData(liveData);
+rxLiveData
+  .debounce(500)
+  .map(val -> !val)
+  .filter(val -> !val)
+  .take(3)
+  .distinctUntilChanged()
+  .observe(this, number -> {
+      // …
+  });
 ```
 
 ### util
