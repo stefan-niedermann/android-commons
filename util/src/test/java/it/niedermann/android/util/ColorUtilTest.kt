@@ -4,10 +4,6 @@ import android.graphics.Color
 import android.os.Build
 import androidx.annotation.ColorInt
 import androidx.core.util.Pair
-import it.niedermann.android.util.ColorUtil.formatColorToParsableHexString
-import it.niedermann.android.util.ColorUtil.getForegroundColorForBackgroundColor
-import it.niedermann.android.util.ColorUtil.intColorToHexString
-import it.niedermann.android.util.ColorUtil.isColorDark
 import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith

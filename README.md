@@ -72,18 +72,20 @@ rxLiveData
 implementation 'com.github.stefan-niedermann.android-commons:util:0.4.0'
 ```
 
+Provides various independent low level util functions.
+
 #### Usage
 
 ```java
-ClipboardUtil.INSTANCE.copyToClipboard(context, "MyText");
-ClipboardUtil.INSTANCE.copyToClipboard(context, "MyTitle", "MyText");
-ClipboardUtil.INSTANCE.getClipboardURLorNull(context);
+ClipboardUtil.copyToClipboard(context, "MyText");
+ClipboardUtil.copyToClipboard(context, "MyTitle", "MyText");
+ClipboardUtil.getClipboardURLorNull(context);
 ```
 
 ```java
-ColorUtil.INSTANCE.formatColorToParsableHexString("123");       // → #112233
-ColorUtil.INSTANCE.formatColorToParsableHexString("#12345605"); // → #123456
-ColorUtil.INSTANCE.intColorToHexString(Color.WHITE);            // →  ffffff
+ColorUtil.formatColorToParsableHexString("123");       // → #112233
+ColorUtil.formatColorToParsableHexString("#12345605"); // → #123456
+ColorUtil.intColorToHexString(Color.WHITE);            // →  ffffff
 ```
 
 ## :notebook: License
