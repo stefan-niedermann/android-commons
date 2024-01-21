@@ -15,6 +15,21 @@ jobs:
       - name: Validate Gradle Wrapper
         uses: gradle/wrapper-validation-action@v1
 
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          check-latest: true
+          cache: 'gradle'
+      - name: Lint
+        run: bash ./gradlew lintDebug --stacktrace --no-configuration-cache
+
   test:
     name: Unit tests
     runs-on: ubuntu-latest
