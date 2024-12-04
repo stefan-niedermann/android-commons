@@ -3,12 +3,12 @@ apply plugin: 'kotlin-android'
 apply plugin: 'maven-publish' // needed for JitPack.io
 
 android {
-    compileSdk 34
+    compileSdk 35
     namespace 'it.niedermann.android.sharedpreferences'
 
     defaultConfig {
         minSdk 21
-        targetSdk 34
+        targetSdk 35
         versionCode version_code
         versionName version_name
 
