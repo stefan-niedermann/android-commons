@@ -3,12 +3,12 @@ apply plugin: 'kotlin-android'
 apply plugin: 'maven-publish' // needed for JitPack.io
 
 android {
-    compileSdk 35
+    compileSdk 34
     namespace 'it.niedermann.android.reactivelivedata'
 
     defaultConfig {
         minSdk 22
-        targetSdk 35
+        targetSdk 34
         versionCode version_code
         versionName version_name
 
