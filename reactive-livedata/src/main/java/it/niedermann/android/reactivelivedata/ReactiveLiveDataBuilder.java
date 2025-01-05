@@ -9,7 +9,6 @@ import androidx.core.util.Supplier;
 import androidx.lifecycle.LiveData;
 
 import java.time.temporal.ChronoUnit;
-import java.util.concurrent.TimeUnit;
 
 import kotlin.Triple;
 import kotlin.jvm.functions.Function1;
@@ -122,8 +121,7 @@ public interface ReactiveLiveDataBuilder<T> {
     ReactiveLiveDataBuilder<T> debounce(long timeout, @NonNull ChronoUnit timeUnit);
 
     /**
-     * @param timeout defaults to {@link TimeUnit#MILLISECONDS}
-     *
+     * @param timeout defaults to {@link ChronoUnit#MILLIS}
      * @see #debounce(long, ChronoUnit)
      */
     @NonNull
