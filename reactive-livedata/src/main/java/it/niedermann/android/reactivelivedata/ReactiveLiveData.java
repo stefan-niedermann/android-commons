@@ -15,7 +15,9 @@ import androidx.lifecycle.Transformations;
 
 import java.time.temporal.ChronoUnit;
 import java.util.concurrent.ExecutorService;
+import java.util.function.IntFunction;
 
+import it.niedermann.android.reactivelivedata.combinator.CombinatorLiveData;
 import it.niedermann.android.reactivelivedata.combinator.DoubleCombinatorLiveData;
 import it.niedermann.android.reactivelivedata.combinator.TripleCombinatorLiveData;
 import it.niedermann.android.reactivelivedata.debounce.DebounceLiveData;
@@ -48,6 +50,38 @@ public class ReactiveLiveData<T> extends MediatorLiveData<T> implements Reactive
 
     public ReactiveLiveData() {
         super();
+    }
+
+    /**
+     * @see <a href="https://reactivex.io/documentation/operators/combinelatest.html">ReactiveX#combineLatest</a>
+     */
+    @SafeVarargs
+    public static <T> ReactiveLiveData<T[]> combineLatest(@NonNull IntFunction<T[]> generator, @NonNull LiveData<T>... sources) {
+        return new CombinatorLiveData<T>(generator, sources);
+    }
+
+    /**
+     * @see #combineLatest(IntFunction, LiveData[])
+     */
+    @SafeVarargs
+    public static ReactiveLiveData<Integer[]> combineLatestInt(@NonNull LiveData<Integer>... sources) {
+        return combineLatest(Integer[]::new, sources);
+    }
+
+    /**
+     * @see #combineLatest(IntFunction, LiveData[])
+     */
+    @SafeVarargs
+    public static ReactiveLiveData<String[]> combineLatestString(@NonNull LiveData<String>... sources) {
+        return combineLatest(String[]::new, sources);
+    }
+
+    /**
+     * @see #combineLatest(IntFunction, LiveData[])
+     */
+    @SafeVarargs
+    public static ReactiveLiveData<Double[]> combineLatestDouble(@NonNull LiveData<Double>... sources) {
+        return combineLatest(Double[]::new, sources);
     }
 
     /**

@@ -1,5 +1,6 @@
 package it.niedermann.android.reactivelivedata;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
 import static it.niedermann.android.reactivelivedata.TestUtil.getOrAwaitValue;
@@ -184,5 +185,33 @@ public class ReactiveLiveDataTest {
 
         Thread.sleep(50);
         assertEquals(Integer.valueOf(2), getOrAwaitValue(reactive1$, 0, TimeUnit.MILLISECONDS));
+    }
+
+    @Test
+    public void combineLatest() throws InterruptedException {
+        final var s1$ = new MutableLiveData<>(0);
+        final var s2$ = new MutableLiveData<>(0);
+        final var s3$ = new MutableLiveData<>(0);
+        final var s4$ = new MutableLiveData<Integer>();
+
+        final var reactive1$ = ReactiveLiveData.combineLatestInt(s1$, s2$, s3$, s4$);
+
+        assertArrayEquals(new Integer[]{0, 0, 0, null}, getOrAwaitValue(reactive1$, 0, TimeUnit.MILLISECONDS));
+
+        Thread.sleep(50);
+        s1$.setValue(1);
+        assertArrayEquals(new Integer[]{1, 0, 0, null}, getOrAwaitValue(reactive1$, 0, TimeUnit.MILLISECONDS));
+
+        Thread.sleep(50);
+        s2$.setValue(1);
+        assertArrayEquals(new Integer[]{1, 1, 0, null}, getOrAwaitValue(reactive1$, 0, TimeUnit.MILLISECONDS));
+
+        Thread.sleep(50);
+        s3$.setValue(1);
+        assertArrayEquals(new Integer[]{1, 1, 1, null}, getOrAwaitValue(reactive1$, 0, TimeUnit.MILLISECONDS));
+
+        Thread.sleep(50);
+        s4$.setValue(4);
+        assertArrayEquals(new Integer[]{1, 1, 1, 4}, getOrAwaitValue(reactive1$, 0, TimeUnit.MILLISECONDS));
     }
 }
