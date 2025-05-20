@@ -19,18 +19,10 @@ Many Android clients for Nextcloud apps need similar mechanisms. To reduce maint
 
 ## How to use
 
-Add this dependency to your `build.gradle`-file to include *all* modules at once:
-
-```groovy
-implementation 'com.github.stefan-niedermann:android-commons:1.0.4'
-```
-
-## Modules
-
 ### shared-preferences
 
 ```groovy
-implementation 'com.github.stefan-niedermann.android-commons:shared-preferences:1.0.4'
+implementation 'com.github.stefan-niedermann.android-commons:shared-preferences:1.1.0'
 ```
 
 Provides `LiveData` wrapper around `SharedPreferences`.
@@ -39,13 +31,13 @@ Provides `LiveData` wrapper around `SharedPreferences`.
 
 ```java
 final var sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
-final var liveData = SharedPreferenceIntLiveData(sharedPreferences, PREF_KEY_MY_COLOR, Color.WHITE)
+final var liveData = SharedPreferenceIntLiveData(sharedPreferences, PREF_KEY_MY_COLOR, Color.WHITE);
 ```
 
 ### reactive-livedata
 
 ```groovy
-implementation 'com.github.stefan-niedermann.android-commons:reactive-livedata:1.0.4'
+implementation 'com.github.stefan-niedermann.android-commons:reactive-livedata:1.1.0'
 ```
 
 Provides [`ReactiveX`](https://reactivex.io/) features for `LiveData`.
@@ -69,7 +61,7 @@ rxLiveData
 ### util
 
 ```groovy
-implementation 'com.github.stefan-niedermann.android-commons:util:1.0.4'
+implementation 'com.github.stefan-niedermann.android-commons:util:1.1.0'
 ```
 
 Provides various independent low level util functions.
