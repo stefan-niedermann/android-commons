@@ -3,12 +3,12 @@ apply plugin: 'kotlin-android'
 apply plugin: 'maven-publish' // needed for JitPack.io
 
 android {
-    compileSdk 34
+    compileSdk 35
     namespace 'it.niedermann.android.reactivelivedata'
 
     defaultConfig {
         minSdk 22
-        targetSdk 34
+        targetSdk 35
         versionCode version_code
         versionName version_name
 
@@ -53,15 +53,16 @@ afterEvaluate {
 }
 
 dependencies {
-    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.5'
+    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:$version_desugar"
 
-    implementation "androidx.lifecycle:lifecycle-livedata:2.9.0"
-    implementation 'androidx.core:core:1.16.0'
+    api "androidx.lifecycle:lifecycle-livedata-ktx:$version_lifecycle"
+    implementation "androidx.core:core-ktx:$version_core"
 
-    testImplementation 'junit:junit:4.13.2'
-    testImplementation 'org.robolectric:robolectric:4.14.1'
-    testImplementation 'androidx.test:core:1.6.1'
-    testImplementation 'androidx.arch.core:core-testing:2.2.0'
+    testImplementation "junit:junit:$version_junit"
+    testImplementation "io.mockk:mockk:$version_mockk"
+    testImplementation "org.robolectric:robolectric:$version_robolectric"
+    testImplementation "androidx.test:core:$version_test_core"
+    testImplementation "androidx.arch.core:core-testing:$version_test_arch_core"
 }
 
 repositories {

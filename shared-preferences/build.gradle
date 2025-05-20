@@ -3,12 +3,12 @@ apply plugin: 'kotlin-android'
 apply plugin: 'maven-publish' // needed for JitPack.io
 
 android {
-    compileSdk 34
+    compileSdk 35
     namespace 'it.niedermann.android.sharedpreferences'
 
     defaultConfig {
         minSdk 21
-        targetSdk 34
+        targetSdk 35
         versionCode version_code
         versionName version_name
 
@@ -53,11 +53,11 @@ afterEvaluate {
 }
 
 dependencies {
-    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.5'
+    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:$version_desugar"
 
-    implementation 'androidx.core:core-ktx:1.16.0'
-    implementation 'androidx.appcompat:appcompat:1.7.0'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "androidx.core:core-ktx:$version_core"
+    implementation "androidx.appcompat:appcompat:$version_appcompat"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$version_kotlin"
 }
 
 repositories {
