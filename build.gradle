@@ -7,7 +7,7 @@ buildscript {
     ext.version_kotlin = '2.3.0'
     ext.version_desugar = '2.1.5'
     ext.version_lifecycle = '2.10.0'
-    ext.version_core = '1.17.0'
+    ext.version_core = '1.18.0'
     ext.version_appcompat = '1.7.1'
 
     ext.version_junit = '4.13.2'
